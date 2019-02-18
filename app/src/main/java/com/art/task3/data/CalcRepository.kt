@@ -1,10 +1,7 @@
 package com.art.task3.data
 
 import android.arch.lifecycle.MutableLiveData
-
-interface CalcRepository {
-    fun calculate(expression: String, result: MutableLiveData<Float>)
-}
+import com.art.task3.domain.CalcRepository
 
 class CalcRepositoryImpl : CalcRepository {
     private val calculator = Calculator()
