@@ -15,12 +15,11 @@ class Calculator {
             when {
                 current == '(' -> operators.add(LeftParentheses)
                 current == ')' -> operateRightParenthesis()
-                current.isMinusSign() -> operands.add(-1.0f)
                 current.isDigit() && lastChar.isMinusSign() -> {
-                    if (operands.size > 1) {
-                        operators.add(AddOperator)
+                    if (operands.size > 0) {
+                        addAndOperateIfNeeded(current = '+')
                     }
-                    operands.replace(operands.last() * current.charToFloat())
+                    operands.add(-1.0f * current.charToFloat())
                 }
                 current.isOperator() -> addAndOperateIfNeeded(current)
                 current != '.' && lastChar == '.' -> {
@@ -90,7 +89,7 @@ class Calculator {
         return lastElement
     }
 
-    private fun Char.isOperator() = this == '-' || this == '+' || this == '/' || this == '*'
+    private fun Char.isOperator() = this == '+' || this == '/' || this == '*'
 
     private fun Char.isMinusSign(): Boolean = this == '-'
 
