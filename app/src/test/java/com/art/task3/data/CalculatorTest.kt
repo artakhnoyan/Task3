@@ -77,6 +77,13 @@ internal class CalculatorTest {
     }
 
     @Test
+    fun `negative number in expression test 3`() {
+        val input = "22*66-3"
+        val output = 1449.0f
+        assertEquals(calc.calculate(input), output)
+    }
+
+    @Test
     fun `some big expression test`() {
         val input = "-2-2-2/4*5+4*4+3+2"
         val output = 14.5f
